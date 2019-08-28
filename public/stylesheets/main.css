@@ -1,0 +1,81 @@
+html {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow-y:scroll;
+}
+
+#main {
+  flex: 1 0 auto;
+  padding: 20px;
+}
+
+.footer {
+  flex-shrink: 0;
+  padding: 20px;
+}
+
+p.text-muted {
+	margin: 0;
+	padding-top: 30px;
+}
+
+.card img {
+	width: 100%;
+}
+
+.card .caption-full {
+	padding: 9px;
+}
+
+h4 {
+	margin-bottom: 1rem;
+	margin-top: .5rem;
+}
+
+#desc {
+	text-align: justify;
+}
+
+.delete-form {
+	display: inline;
+}
+
+#imgindex {
+	padding: 15px 15px;
+}
+
+.typingform {
+	width: 45%; 
+	margin: 25px auto;
+}
+
+.divlog a:nth-last-child(1) {
+	display: block;
+	text-align: right;
+}
+
+ul.dropdown-menu.show {
+	background-color: #343a40;
+}
+
+a.dropdown-item {
+	color: rgba(255,255,255,.5);
+}
+
+a.dropdown-item:hover {
+	background-color: #343a40;
+	color: rgba(255,255,255,.75);
+}
+
+@media (min-width: 992px) {
+  .card-img-top {
+	object-fit: cover;
+	height: 250px;
+	width: 100%;
+  }
+}

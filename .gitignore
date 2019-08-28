@@ -1,0 +1,5 @@
+.env
+node_modules/
+seeds.js
+mapbox-test.js
+readme.md

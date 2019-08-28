@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<!-- Make site responsive on mobile/tablet -->
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<title>YelpCamp</title>
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
+    crossorigin="anonymous">
+		<link rel="stylesheet" href="/stylesheets/main.css">
+	</head>
+	<body>
+		<nav class="navbar bg-dark navbar-dark navbar-expand-lg navbar-inverse" style="margin-bottom: 25px;">
+			<div class="container">
+				<div class="navbar-header">
+					<button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+						<span class="navbar-toggler-icon"></span>
+					</button>
+					<a class="navbar-brand" href="/">YelpCamp</a>
+				</div>
+				<div class="collapse navbar-collapse" id="navbarSupportedContent">
+					<ul class="nav navbar-nav mr-auto">
+						<li class="nav-item" "<%= typeof page !== 'undefined' && page === 'campgrounds' ? 'active' : '' %>"><a class="nav-link" href="/campgrounds">Home</a></li>
+					</ul>
+					<ul class="nav navbar-nav">
+					  <% if(!currentUser){ %>
+						  <li class="nav-item" "<%= typeof page !== 'undefined' && page === 'login' ? 'active' : '' %>"><a class="nav-link" href="/login">Login</a></li>
+						  <li class="nav-item" "<%= typeof page !== 'undefined' && page === 'register' ? 'active' : '' %>"><a class="nav-link" href="/register">Sign Up</a></li>
+					  <% } else { %>
+							<li class="dropdown">
+								<a href="#" class="nav-link dropdown-toggle" id="dropdownMenuOffset" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-offset="10, 20">Notifications <span class="badge"><%= notifications.length %></span></a>
+								<ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuOffset">
+									<li class="nav-item">
+										<a class="dropdown-item" href="/notifications">View past notifications</a>
+									</li>
+									<% notifications.forEach(function(notification) { %>
+										<li>
+											<a class="dropdown-item" href="/notifications/<%= notification.id %>">
+												<%= notification.username %> created a new campground
+											</a>	
+										</li>
+									<% }); %>
+								</ul>
+							</li>
+							<li class="nav-item"><a class="nav-link" href="/users/<%= currentUser.id %>">Signed In As <%= currentUser.username %></a></li>
+							<li class="nav-item"><a class="nav-link" href="/logout">Logout</a></li>
+					  <% } %>
+					</ul>
+				</div>  
+			</div>
+		</nav>	
+	<% if(error && error.length > 0) { %>
+		<div class="container"> 
+			<div class="alert alert-danger" role="alert">
+				<%= error %>
+			</div>
+		</div>
+	<% } %>
+	<% if(success && success.length > 0) { %>
+		<div class="container">   
+			<div class="alert alert-success" role="alert">
+				<%= success %>
+			</div>
+		</div>
+	<% } %>
+	<div id="main" class="container" style="padding: 0;">
